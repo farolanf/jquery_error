@@ -1,0 +1,31 @@
+#topBar {
+    padding: 5px;
+    margin: 5px;
+    display: inline-block;
+    float: left;
+}
+
+.mainEditor {
+    border-radius: 3px;
+    margin-top: 0;
+    display: inline-block;
+    height: 150px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.bottomEditor {
+    border-radius: 3px;
+    height: 300px;
+    position: relative;
+}
+
+#topTwo {
+    float: right;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
+.ace_content {
+    background-color: rgba(14, 98, 165, 0.07);
+}
