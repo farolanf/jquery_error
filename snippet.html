@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/2.23.4/mediaelement-and-player.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/2.23.4/mediaelementplayer.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/ace/1.2.4/min/ace.js"></script>
+    <script type="text/javascript" src="js/transcribe.js"></script>
+    <link rel="stylesheet" href="css/transcribe.css">
+    <style type="text/css" media="screen">
+        .speaker {
+            margin-left: 1%;
+            margin-right: 1%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="topTwo">
+        <button class="btn btn-med btn-info" id="settingsBtn"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
+        <button id="submitTranscript" class="btn btn-success">Submit</button>
+    </div>
+    <div id="topBar">
+        <div id="fancyAudio">
+            <!-- TODO make an audio player, stylized with a line and a circle moving through the center to display progress !-->
+            <div id="audioLine"></div>
+            <div id="circleProgress"></div>
+        </div>
+        <audio class="mediaPlayer" id="audioPlayer" src="{{project.Files.FileUrl}}"></audio>
+        <div class="controls">
+            <button id="play" class="btn btn-info btn-sm">Play</button>
+            <button id="back" class="btn btn-success btn-sm">Go Back</button>
+            <button id="pause" class="btn btn-danger btn-sm">Pause</button>
+        </div>
+        <div id="settings">
+            <div id="shortcuts">
+                <div id="playbackShortcut">
+                    <button>
+                    <i class="fa fa-2x fa-caret-right" aria-hidden="true"></i></br>{{playbackShortcut}}</br>+{{playbackAmount}}s</button>
+                </div>
+                <div id="goBackShortcut">
+                    <button>
+                    <i class="fa fa-2x fa-caret-left" aria-hidden="true"></i></br>{{goBackShortcut}}</br>-{{goBackAmount}}s</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    </br>
+    <div class="modal fade" id="updateSettingsModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Settings</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        Go back for: <input id="goBackTime" class="form-control" value="{{goBackAmount}}"></br>
+                        Play audio for: <input id="goForwardTime" class="form-control" value="{{playbackAmount}}"></br>
+                        Shortcut to go back: <input id="shortcutToGoBack" class="form-control" value="{{goBackShortcut}}"></br>
+                        Shortcut to play clip: <input id="goForwardShortcut" class="form-control" value="{{playbackShortcut}}">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="submitSettingsChanges" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="addNewSpeakerModal" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    <h3>Add New Speaker</h3>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <input class="addNewSpeakerInput form-control" id="addNewSpeakerInput" maxlength="10" placeholder="Male, Female, Interviewer, etc. (max length 10 characters)">
+                        <input id="speakerIdValue" hidden>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                    <button class="btn btn-primary" id="addNewSpeakerSubmit">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
