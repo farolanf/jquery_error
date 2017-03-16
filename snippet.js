@@ -181,7 +181,7 @@ $(document).ready(function() {
 
     function addNewEditor() {
         // handle add speakers
-        addSpeakerLabels(function(done) {
+        addSpeakerLabels(function(done, height) {
             $("body").append(done);
             updateEditors(height);
         });
