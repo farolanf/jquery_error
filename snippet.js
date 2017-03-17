@@ -150,30 +150,34 @@ $(document).ready(function() {
 
     function updateEditors(height) {
         var i = 0;
+        $('div.mainEditor').remove();
         $('textarea[data-editor]').each(function() {
             var textarea = $(this);
             var mode = textarea.data('editor');
             var editDiv = $('<div>', {
                 position: 'relative',
-                width: textarea.width(),
+                // width: textarea.width(),
+                width: '100%',
                 height: textarea.height(),
                 'class': textarea.attr('class') // modify these to include the Row div
             }).insertBefore(textarea);
             editDiv.attr('data-val', '' + val + '');
             textarea.hide();
-            var editor = ace.edit(editDiv[i]);
-            alert('ace.edit' + (i))
-            editor.focus();
-            editor.setTheme("ace/theme/dawn");
-            editor.renderer.setShowGutter(false);
-            editor.setHighlightActiveLine(false);
-            editor.setOption("showPrintMargin", false);
-            editor.setOption("wrap", true);
-            editor.setOption("tabSize", 0);
-            editor.setOption("useSoftTabs", true);
-            editor.resize();
-            textarea.closest('form').submit(function() {
-                textarea.val(editor.getSession().getValue());
+            $('div.mainEditor:not(.ace_editor)').each(function() {
+                var editor = ace.edit(this);
+                // alert('ace.edit' + (i))
+                editor.focus();
+                editor.setTheme("ace/theme/dawn");
+                editor.renderer.setShowGutter(false);
+                editor.setHighlightActiveLine(false);
+                editor.setOption("showPrintMargin", false);
+                editor.setOption("wrap", true);
+                editor.setOption("tabSize", 0);
+                editor.setOption("useSoftTabs", true);
+                editor.resize();
+                textarea.closest('form').submit(function() {
+                    textarea.val(editor.getSession().getValue());
+                });
             });
             i++;
         });
@@ -181,9 +185,10 @@ $(document).ready(function() {
 
     function addNewEditor() {
         // handle add speakers
-        addSpeakerLabels(function(done, height) {
+        addSpeakerLabels(function(done) {
             $("body").append(done);
-            updateEditors(height);
+           updateEditors();
+            //updateEditors(height);
         });
         val++;
     }
@@ -203,12 +208,12 @@ $(document).ready(function() {
         if (heightOfEditor == 0) {
             beginning = '<div class="row" data-val="' + val + '"><div class="speaker col-md-1">' +
                 '<div class="dropdown" data-val="' + val + '"><button class="btn btn-primary dropdown-toggle"' +
-                'type="button" data-toggle="dropdown">Speaker 1<span class="caret"></span></button>';
+                'type="button" data-toggle="dropdown">Speaker 1 <span class="caret"></span></button>';
         } else {
             beginning = '<div class="row" data-val="' +
                 val + '"><div class="speaker col-md-1"><div class="dropdown">' +
                 '<button class="btn btn-primary dropdown-toggle" type="button"' +
-                ' data-toggle="dropdown">Speaker 1<span class="caret"></span></button>';
+                ' data-toggle="dropdown">Speaker 1 <span class="caret"></span></button>';
         }
         var htmlToAdd = '<ul class="dropdown-menu" data-val="' + val + '"' +
             'aria-labelledby="menu1"><li role="presentation">' +
@@ -217,8 +222,8 @@ $(document).ready(function() {
             htmlToAdd = htmlToAdd + '<li role="presentation"><a role="menuitem" tabindex="-1" href="#" data-value="' + speaker + '">' + speaker + '</a></li>';
         });
         htmlToAdd = htmlToAdd + "</ul>";
-        done(beginning + htmlToAdd + '</div></div><textarea data-val=' +
-            val + ' data-editor class="mainEditor col-md-10"></textarea>', heightOfEditor);
+        done(beginning + htmlToAdd + '</div></div><div class="col-md-10"><textarea data-val=' +
+            val + ' data-editor class="mainEditor"></textarea></div></div>', heightOfEditor);
     }
 
     function post(path, params, method) {
