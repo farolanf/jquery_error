@@ -156,7 +156,6 @@ $(document).ready(function() {
             var mode = textarea.data('editor');
             var editDiv = $('<div>', {
                 position: 'relative',
-                // width: textarea.width(),
                 width: '100%',
                 height: textarea.height(),
                 'class': textarea.attr('class') // modify these to include the Row div
@@ -185,10 +184,9 @@ $(document).ready(function() {
 
     function addNewEditor() {
         // handle add speakers
-        addSpeakerLabels(function(done) {
-            $("body").append(done);
-           updateEditors();
-            //updateEditors(height);
+        addSpeakerLabels(function(done, height) {
+            $("body .rows").append(done);
+            updateEditors(height);
         });
         val++;
     }
