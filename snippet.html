@@ -5,9 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work</title>
-    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mediaelement/2.23.4/mediaelement-and-player.min.js"></script>
@@ -30,7 +32,7 @@
         <button class="btn btn-med btn-info" id="settingsBtn"><i class="fa fa-cog" aria-hidden="true"></i> Settings</button>
         <button id="submitTranscript" class="btn btn-success">Submit</button>
     </div>
-    <div id="topBar clearfix">
+    <div id="topBar">
         <div id="fancyAudio">
             <!-- TODO make an audio player, stylized with a line and a circle moving through the center to display progress !-->
             <div id="audioLine"></div>
@@ -46,34 +48,27 @@
             <div id="shortcuts">
                 <div id="playbackShortcut">
                     <button>
-                    <i class="fa fa-2x fa-caret-right" aria-hidden="true"></i></br>{{playbackShortcut}}</br>+{{playbackAmount}}s</button>
+                        <i class="fa fa-2x fa-caret-right" aria-hidden="true"></i></br>{{playbackShortcut}}</br>+{{playbackAmount}}s
+                    </button>
                 </div>
                 <div id="goBackShortcut">
                     <button>
-                    <i class="fa fa-2x fa-caret-left" aria-hidden="true"></i></br>{{goBackShortcut}}</br>-{{goBackAmount}}s</button>
+                        <i class="fa fa-2x fa-caret-left" aria-hidden="true"></i></br>{{goBackShortcut}}</br>-{{goBackAmount}}s
+                    </button>
                 </div>
             </div>
         </div>
     </div>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
-    </br>
+    <div class="rows">
+    </div>
     <div class="modal fade" id="updateSettingsModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Settings</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
@@ -109,8 +104,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="rows">
     </div>
 </body>
 
